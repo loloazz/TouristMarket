@@ -1,0 +1,62 @@
+
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "connection": [
+                            {
+                                "jdbcUrl": [
+                                    "jdbc:mysql://hadoop100:3306/tour"
+                                ],
+                                "table": [
+                                    "scenic_boundary"
+                                ]
+                            }
+                        ],
+                        "column": ["*"],
+                        "password": "123456",
+                        "username": "root"
+                    }
+                },
+                "writer": {
+                    "name": "hdfswriter",
+                    "parameter": {
+                        "defaultFS": "hdfs://hadoop100:9000",
+                        "fileType": "text",
+                        "path": "/daas/motl/ods/ods_scenic_boundary",
+                        "fileName": "data",
+                        "column": [
+                            {
+                                "name": "scenic_id",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "scenic_name",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "boundary",
+                                "type": "STRING"
+                            }
+                        ],
+                        "writeMode": "append",
+                        "fieldDelimiter": "\t"
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "errorLimit": {
+                "percentage": 0,
+                "record": 0
+            },
+            "speed": {
+                "channel": 1,
+                "record": 1000
+            }
+        }
+    }
+}

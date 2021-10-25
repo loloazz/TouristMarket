@@ -1,0 +1,97 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "connection": [
+                            {
+                                "jdbcUrl": [
+                                    "jdbc:mysql://hadoop100:3306/tour"
+                                ],
+                                "table": [
+                                    "usertag"
+                                ]
+                            }
+                        ],
+                        "column": ["*"],
+                        "password": "123456",
+                        "username": "root"
+                    }
+                },
+                "writer": {
+                    "name": "hdfswriter",
+                    "parameter": {
+                        "defaultFS": "hdfs://hadoop100:9000",
+                        "fileType": "text",
+                        "path": "/daas/motl/ods/ods_usertag_m/month_id=${month_id}",
+                        "fileName": "data",
+                        "column": [
+                            {
+                                "name": "mdn",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "name",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "gender",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "age",
+                                "type": "INT"
+                            },
+                            {
+                                "name": "id_number",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "number_attr",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "trmnl_brand",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "trmnl_price",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "packg",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "conpot",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "resi_grid_id",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "resi_county_id",
+                                "type": "STRING"
+                            }
+                        ],
+                        "writeMode": "append",
+                        "fieldDelimiter": "\t"
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "errorLimit": {
+                "percentage": 0,
+                "record": 0
+            },
+            "speed": {
+                "channel": 4,
+                "record": 1000
+            }
+        }
+    }
+}

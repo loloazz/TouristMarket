@@ -1,0 +1,86 @@
+
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "connection": [
+                            {
+                                "jdbcUrl": [
+                                    "jdbc:mysql://hadoop100:3306/tour"
+                                ],
+                                "table": [
+                                    "admin_code"
+                                ]
+                            }
+                        ],
+                        "column": ["*"],
+                        "password": "123456",
+                        "username": "root"
+                    }
+                },
+                "writer": {
+                    "name": "hdfswriter",
+                    "parameter": {
+                        "defaultFS": "hdfs://hadoop100:9000",
+                        "fileType": "text",
+                        "path": "/daas/motl/ods/ods_admincode",
+                        "fileName": "data",
+                        "column": [
+                            {
+                                "name": "prov_id",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "prov_name",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "city_id",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "city_name",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "county_id",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "county_name",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "city_level",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "economic_belt",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "city_feature1",
+                                "type": "STRING"
+                            }
+                        ],
+                        "writeMode": "append",
+                        "fieldDelimiter": "\t"
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "errorLimit": {
+                "percentage": 0,
+                "record": 0
+            },
+            "speed": {
+                "channel": 1,
+                "record": 1000
+            }
+        }
+    }
+}
