@@ -1,0 +1,28 @@
+
+---
+config:
+  #  jexl 表达式
+  YYYYMMDD: $(new("org.joda.time.DateTime").minusDays(1).toString("yyyyMMdd"))
+
+nodes:
+
+  - name: MergeLocationApp
+    type: command
+    config:
+      command: sh /opt/jars/MergeLocationApp.sh ${YYYYMMDD}
+
+
+  - name: StayPointApp
+    type: command
+    config:
+      command: sh /opt/jars/StayPoint.sh ${YYYYMMDD}
+    dependsOn:
+      - MergeLocationApp
+
+
+  - name: CityTouristApp
+    type: command
+    config:
+      command: sh /opt/jars/CityTouristApp.sh ${YYYYMMDD}
+    dependsOn:
+      - StayPointApp
