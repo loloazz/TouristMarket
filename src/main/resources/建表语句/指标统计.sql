@@ -34,12 +34,12 @@
     ,resi_grid_id string comment '常住地网格'  
     ,resi_county_id string comment '常住地区县'  
 
-客流量按天 [省,客流量]
+-- 客流量按天 [省,客流量]
 
 select d_province_id,day_id,count(1) as c from dal_tour.dal_tour_province_tourist_msk_d where day_id=20180503 group by d_province_id,day_id
 
 
- 性别按天 [省,性别,客流量]
+--  性别按天 [省,性别,客流量]
 
 select a.d_province_id,b.gender,count(1) c from 
 (select * from dal_tour.dal_tour_province_tourist_msk_d  where day_id=20180503) as a
@@ -48,8 +48,8 @@ join
 on a.mdn=b.mdn
 group by a.d_province_id,b.gender
 
-
-年龄按天 [省,年龄,客流量]
+--
+-- 年龄按天 [省,年龄,客流量]
 
 
 select a.d_province_id,b.age,count(1) c from 
@@ -60,8 +60,8 @@ on a.mdn=b.mdn
 group by a.d_province_id,b.age
 
 
-为了减少表关联，可以先做一张宽表，将所需要的所有字段关联好，
-后续的指标需要什么字段直接选择即可
+-- 为了减少表关联，可以先做一张宽表，将所需要的所有字段关联好，
+-- 后续的指标需要什么字段直接选择即可
 
 
 使用宽表统计指标
