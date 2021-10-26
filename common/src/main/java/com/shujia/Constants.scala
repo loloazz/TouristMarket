@@ -30,7 +30,7 @@ object Constants {
 
   //  #dal_tour 表
   val CITY_TOURIST_TABLE_NAME: String = Config.getConfig("cityTourist.table.name")
-//  cityTourist.save.path=/daas/motl/dal_tour/dal_tour_city_tourist_msk_d/
+  //  cityTourist.save.path=/daas/motl/dal_tour/dal_tour_city_tourist_msk_d/
   val CITY_TOURIST_SAVE_PATH: String = Config.getConfig("cityTourist.save.path")
 
   //  #融合表
@@ -49,11 +49,7 @@ object Constants {
   val LAST_USERTAG_SAVE_PATH: String = Config.getConfig("dim.usertag.path.name")
 
 
-
-
-
-
-
+  val CITY_WIDE_TABLE_NAME: String = Config.getConfig("cityWide.table.name")
 
 
 }
